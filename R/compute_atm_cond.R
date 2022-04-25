@@ -1,8 +1,8 @@
-#' Comute atmospheric conductance
+#' Compute atmospheric conductance
 #'
-#' @param zm is the height at which windspeed is measured - must be higher than the vegetation (cm); usually mesured 200 cm above vegetation
+#' @param zm is the height at which windspeed is measured - must be higher than the vegetation (cm); usually measured 200 cm above vegetation
 #' @param h is vegetation height (cm)
-#' @param v is windspeek (cm/s)
+#' @param v is windspeed (cm/s)
 #' @param kd constant; default = 0.7
 #' @param k0 constant; default = 0.1
 #'
@@ -19,6 +19,5 @@ compute_atm_cond = function(h, zm = 200 + h, v, kd = 0.7, k0 = 0.1) {
   
   c_at = v / (6.25 * log(((zm - zd) / z0)) ^ 2)
   
-  return(list(max_atm_cond=max(c_at), min_atm_cond=min(c_at), mean_atm_cond=mean(c_at)))
-  
+  return(list(c_at=c_at))
 }
